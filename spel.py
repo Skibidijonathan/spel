@@ -31,6 +31,11 @@ print("""
 def blackjack():
     pass
 
+def slots():
+    pass
+
+def roulette():
+    pass
 
 while True:
     startmeny = input(
@@ -50,11 +55,11 @@ while True:
             '''
             )
             if huvudmeny =="1":
-                pass
+                slots()
             if huvudmeny =="2":
-                pass
+                blackjack()
             if huvudmeny =="3":
-                pass
+                roulette()
             if huvudmeny =="4":
                 break
     if startmeny =="2":
