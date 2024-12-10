@@ -81,11 +81,10 @@ def calculate_score(hand):
 def display_hand(hand, owner):
     print(f"{owner}'s hand: {', '.join(hand)}")
 
-def blackjack():
+def play_blackjack():
     global player_money
     while True:
         blackbet = float(input(f"Hur mycket vill du satsa?: "))
-
         if blackbet > player_money:
             print("Du får bara spela med pengar du har! ")
         else:
@@ -144,46 +143,46 @@ def blackjack():
 
 
 def slots():
+    leave ="a"
+    while leave !="q":
+        global player_money
+        while True:
+            slotsbet = float(input(f"Hur mycket vill du satsa?: "))
+            if slotsbet > player_money:
+                print("Du får bara spela med pengar du har! ")
+            else:
+                break
+
+        symbols = ["🍒", "🍋", "🔔", "⭐", "7️⃣"]
         
-    global player_money
-    while True:
-        slotsbet = float(input(f"Hur mycket vill du satsa?: "))
+        reel1 = random.choice(symbols)
+        reel2 = random.choice(symbols)
+        reel3 = random.choice(symbols)
 
-        if slotsbet > player_money:
-            print("Du får bara spela med pengar du har! ")
+        print(f"{reel1} | {reel2} | {reel3}")
+
+        if reel1 == reel2 == reel3:
+            print("Jackpot!")
+            player_money += slotsbet * 3
+            print(f"Du har: {player_money}")
+            leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen")
+        elif reel1 == reel2 or reel1 == reel3 or reel2 == reel3:
+            print("Grattis! Två hjul visar samma symbol!")
+            player_money += slotsbet * 1.5
+            print(f"Du har: {player_money}")
+            leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen")
+        elif reel1 == "7️⃣" and reel2 == "7️⃣" or reel1 == "7️⃣" and reel3 == "7️⃣" or reel2 == "7️⃣" and reel3 == "7️⃣":
+            print("Grattis! Du fick två 7️⃣!")
+            player_money += slotsbet * 2
+            print(f"Du har: {player_money}")
+            leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen")
         else:
-            break
+            print("Tyvärr, ingen vinst. Försök igen!")
+            player_money -= slotsbet
+            print(f"Du har: {player_money}")
+            leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
 
-    symbols = ["🍒", "🍋", "🔔", "⭐", "7️⃣"]
-    
-    reel1 = random.choice(symbols)
-    reel2 = random.choice(symbols)
-    reel3 = random.choice(symbols)
-
-    print(f"{reel1} | {reel2} | {reel3}")
-
-    if reel1 == reel2 == reel3:
-        print("Jackpot!")
-        player_money += slotsbet*3
-    elif reel1 == reel2 or reel1 == reel3 or reel2 == reel3:
-        print("Grattis! Två hjul visar samma symbol!")
-        player_money += slotsbet*1.5
-        print(f"Du har: {player_money}")
-    elif reel1 == "7️⃣" and reel2 == "7️⃣" or reel1 == "7️⃣" and reel3 == "7️⃣" or reel2 == "7️⃣" and reel3 == "7️⃣":
-        print("Grattis! Du fick två 7️⃣!")
-        player_money += slotsbet*2        
-    else:
-        print("Tyvärr, ingen vinst. Försök igen!")
-        player_money -= slotsbet
-
-while True:
-    play = input("Tryck på Enter för att spela (eller 'q' för att avsluta): ")
-    if play == 'q':
-        break
-    slots()
-
-print("Tack för att du spelade!")
-
+        
 
 def roulette():
     pass
@@ -197,8 +196,9 @@ while True:
     )
     if startmeny == "1":
         while True:
-            if player_money ==0:
-                pass
+            if player_money == 0:
+                print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
+                break
             huvudmeny = input(
             '''
     (1). Vill du spela slots?
@@ -211,14 +211,16 @@ while True:
             if huvudmeny == "1":
                 slots()
             elif huvudmeny == "2":
-                blackjack()
+                play_blackjack()  
             elif huvudmeny == "3":
                 roulette()
             elif huvudmeny == "4":
                 break
             elif huvudmeny == "5":
-                print(player_money)
+                print(f"Du har: {player_money} kronor")
     elif startmeny == "2":
         break
     else:
         print("Du måste välja mellan 1 eller 2")
+
+print("Tack för att du spelade!")
