@@ -47,7 +47,6 @@ def introduction():
     - För att spela, välj ett spel från menyn.
     - Du kan när som helst lämna casinot och avsluta spelet.
 
-    LYCKA TILL OCH SPELA ANSVARSFULLT!
     """)
 
 player_money = 100000
@@ -58,14 +57,14 @@ introduction()
 
 def create_deck():
     suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
-    values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+    values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack(10)', 'Queen(10)', 'King(10)', 'Ace']
     deck = [f"{value} of {suit}" for suit in suits for value in values]
     random.shuffle(deck)
     return deck
 
 def calculate_score(hand):
     values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
-              'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
+              'Jack(10)': 10, 'Queen(10)': 10, 'King(10)': 10, 'Ace': 11}
     score = 0
     aces = 0
     for card in hand:
@@ -181,11 +180,13 @@ def slots():
             player_money -= slotsbet
             print(f"Du har: {player_money}")
             leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
-
         
 
 def roulette():
     pass
+
+    
+
 
 while True:
     startmeny = input(
