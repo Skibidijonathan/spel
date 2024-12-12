@@ -181,9 +181,97 @@ def slots():
             print(f"Du har: {player_money}")
             leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
         
-
 def roulette():
-    pass
+        
+    leave ="a"
+    while leave !="q":
+        global player_money
+        while True:
+            roulettebet = float(input(f"Hur mycket vill du satsa?: "))
+            if roulettebet > player_money:
+                print("Du får bara spela med pengar du har! ")
+            else:
+                break
+
+    def spin_roulette():
+        number = random.randint(0, 36)
+        color = "red" if number % 2 == 0 else "black"
+        if number == 0:
+            color = "green"
+        return number, color
+
+    def main():
+        print("Välkommen till Roulette!")
+        print("Du kan satsa på:")
+        print("1. Ett specifikt nummer (0-36)")
+        print("2. Färg (red eller black)")
+        print("3. Jämnt eller ojämnt (even eller odd)")
+
+        while True:
+            print("\nVad vill du satsa på?")
+            print("1: Nummer")
+            print("2: Färg")
+            print("3: Jämnt/Ojämnt")
+            print("4: Avsluta spelet")
+
+            choice = input("Välj ett alternativ (1-4): ")
+
+            if choice == "4":
+                print("Tack för att du spelade!")
+                break
+
+            if choice == "1":
+                bet_number = input("Välj ett nummer mellan 0 och 36: ")
+                if not bet_number.isdigit() or not (0 <= int(bet_number) <= 36):
+                    print("Ogiltigt nummer. Försök igen.")
+                    continue
+                bet_number = int(bet_number)
+                result_number, result_color = spin_roulette()
+                print(f"Roulette-resultat: {result_number} ({result_color})")
+                if bet_number == result_number:
+                    print("Grattis! Du gissade rätt nummer!")
+                    player_money += roulettebet*36
+                else:
+                    print("Tyvärr, fel nummer.")
+                    player_money -= roulettebet
+
+            elif choice == "2":
+                bet_color = input("Välj en färg (red eller black): ").lower()
+                if bet_color not in ["red", "black"]:
+                    print("Ogiltig färg. Försök igen.")
+                    continue
+                result_number, result_color = spin_roulette()
+                print(f"Roulette-resultat: {result_number} ({result_color})")
+                if bet_color == result_color:
+                    print("Grattis! Du gissade rätt färg!")
+                    player_money += roulettebet*2
+                else:
+                    print("Tyvärr, fel färg.")
+                    player_money -= roulettebet
+
+            elif choice == "3":
+                bet_parity = input("Välj (even eller odd): ").lower()
+                if bet_parity not in ["even", "odd"]:
+                    print("Ogiltigt val. Försök igen.")
+                    continue
+                result_number, result_color = spin_roulette()
+                print(f"Roulette-resultat: {result_number} ({result_color})")
+                if result_number == 0:
+                    print("Numret är 0, ingen vinst.")
+                elif (result_number % 2 == 0 and bet_parity == "even") or (result_number % 2 != 0 and bet_parity == "odd"):
+                    print("Grattis! Du gissade rätt!")
+                    player_money += roulettebet*2
+                else:
+                    print("Tyvärr, fel val.")
+                    player_money -= roulettebet
+
+            else:
+                print("Ogiltigt val. Försök igen.")
+
+    if __name__ == "__main__":
+        main()
+
+    
 
     
 
