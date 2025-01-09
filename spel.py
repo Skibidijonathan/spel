@@ -180,6 +180,8 @@ def slots():
             player_money -= slotsbet
             print(f"Du har: {player_money}")
             leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
+            if player_money == 0:
+                break
         
 def roulette():
     global player_money
@@ -195,6 +197,9 @@ def roulette():
                     break
             except ValueError:
                 print("fungerar it så, skriv in en siffra. ")
+            if player_money == 0:
+                print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
+                break
 
         def spin_roulette():
             number = random.randint(0, 36)
@@ -280,6 +285,10 @@ def roulette():
             if leave == "q":
                 print("Tack för att du spelade Roulette!")
                 break
+            if player_money == 0:
+                print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
+                break
+            
 
 
   
