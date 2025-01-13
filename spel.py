@@ -187,7 +187,7 @@ def roulette():
     global player_money
     leave = "a"
     while leave != "q":
-        
+
         while True:
             try:
                 roulettebet = float(input(f"Hur mycket vill du satsa?: "))
@@ -195,11 +195,13 @@ def roulette():
                     print("Du får bara spela med pengar du har! ")
                 else:
                     break
+            
             except ValueError:
-                print("fungerar it så, skriv in en siffra. ")
-            if player_money == 0:
-                print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
-                break
+                print("Fungerar inte så, skriv in en siffra. ")
+
+        if player_money == 0:
+            print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
+            break
 
         def spin_roulette():
             number = random.randint(0, 36)
@@ -276,18 +278,21 @@ def roulette():
                 else:
                     print("Tyvärr, fel val.")
                     player_money -= roulettebet
-
             else:
                 print("Ogiltigt val. Försök igen.")
 
             print(f"Du har nu: {player_money} kronor.")
+
+            if player_money == 0:
+                print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
+                leave = "q"
+                break
+
             leave = input("Tryck (q) för att lämna Roulette, eller (Enter) för att spela igen: ").lower()
             if leave == "q":
                 print("Tack för att du spelade Roulette!")
                 break
-            if player_money == 0:
-                print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
-                break
+
             
 
 
