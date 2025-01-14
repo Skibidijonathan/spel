@@ -83,11 +83,15 @@ def display_hand(hand, owner):
 def play_blackjack():
     global player_money
     while True:
-        blackbet = float(input(f"Hur mycket vill du satsa?: "))
-        if blackbet > player_money or blackbet <= 0:    
-            print("Du får bara spela med pengar du har! ")
-        else:
-            break
+        try:
+            blackbet = float(input("Hur mycket vill du satsa?: "))
+            if blackbet > player_money or blackbet <= 0:
+                print("Du får bara spela med pengar du har!")
+            else:
+                break
+        except ValueError:
+            print("Fungerar it så, skriv ett nummer. ")
+
 
     deck = create_deck()
     player_hand = [deck.pop(), deck.pop()]
@@ -142,15 +146,20 @@ def play_blackjack():
 
 
 def slots():
-    leave ="a"
-    while leave !="q":
+    leave = "a"
+    while leave != "q":
         global player_money
         while True:
-            slotsbet = float(input(f"Hur mycket vill du satsa?: "))
-            if slotsbet > player_money or slotsbet <= 0:
-                print("Du får bara spela med pengar du har! ")
-            else:
-                break
+            try:
+                slotsbet = float(input("Hur mycket vill du satsa?: "))
+                if slotsbet > player_money or slotsbet <= 0:
+                    print("Du får bara spela med pengar du har! ")
+                else:
+                    break
+            except ValueError:
+                print("Fungerar it så, skriv ett nummer.")
+
+           
 
         symbols = ["🍒", "🍋", "🔔", "⭐", "7️⃣"]
         
