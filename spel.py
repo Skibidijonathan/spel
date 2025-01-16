@@ -98,6 +98,8 @@ def play_blackjack():
     dealer_hand = [deck.pop(), deck.pop()]
 
     while True:
+        print("Dealing Cards...")
+        time.sleep(1.6)
         display_hand(player_hand, "Player")
         print(f"Dealer's hand: {dealer_hand[0]}, Hidden")
 
@@ -167,6 +169,14 @@ def slots():
         reel2 = random.choice(symbols)
         reel3 = random.choice(symbols)
 
+        print("Rolling.")
+        time.sleep(0.1)
+        print("Rolling..")
+        time.sleep(0.1)
+        print("Rolling...")
+        
+        time.sleep(1)
+
         print(f"{reel1} | {reel2} | {reel3}")
 
         if reel1 == reel2 == reel3:
@@ -191,6 +201,22 @@ def slots():
             leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
             if player_money == 0:
                 break
+
+noo = 1
+
+def elmer():
+    global noo
+    if noo == 1:
+        print("Du skrev in den hemliga koden nu förtjänar du en belöning hehehehehehe")
+        global player_money
+        player_money += player_money*player_money
+        print("Du har nu", player_money, "kronor")
+        noo += noo
+
+    else:
+        print("Fungerar it så!")
+        time.sleep(1)
+        quit()
         
 def roulette():
     global player_money
@@ -206,7 +232,7 @@ def roulette():
                     break
             
             except ValueError:
-                print("Fungerar inte så, skriv in en siffra. ")
+                print("Fungerar it så, skriv in en siffra. ")
 
         if player_money == 0:
             print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
@@ -244,6 +270,8 @@ def roulette():
                     continue
 
                 result_number, result_color = spin_roulette()
+                print("Laddar resultat...")
+                time.sleep(3)
                 print(f"Roulette-resultat: {result_number} ({result_color})")
                 if bet_number == result_number:
                     print("Grattis! Du gissade rätt nummer!")
@@ -259,6 +287,8 @@ def roulette():
                     continue
 
                 result_number, result_color = spin_roulette()
+                print("Laddar resultat...")
+                time.sleep(3)
                 print(f"Roulette-resultat: {result_number} ({result_color})")
                 if result_color == "green":
                     print("Numret är 0 (green). Ingen vinst!")
@@ -277,6 +307,8 @@ def roulette():
                     continue
 
                 result_number, result_color = spin_roulette()
+                print("Laddar resultat...")
+                time.sleep(3)
                 print(f"Roulette-resultat: {result_number} ({result_color})")
                 if result_number == 0:
                     print("Numret är 0 (green). Ingen vinst!")
@@ -318,6 +350,12 @@ while True:
     )
     if startmeny == "1":
         while True:
+            if player_money >= 1900000:
+                dop = input("Du har vunnit igenom att få över 19 miljoner kronor! Vill du fortsätta tryck (y) annars tryck på valfri knapp (Använd koden elmer i menyn!)")
+                if dop =="y":
+                    pass
+                else:
+                    quit()
             if player_money == 0:
                 print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
                 break
@@ -340,9 +378,12 @@ while True:
                 break
             elif huvudmeny == "5":
                 print(f"Du har: {player_money} kronor")
+            elif huvudmeny == "elmer":
+                elmer()
     elif startmeny == "2":
         break
     else:
         print("Du måste välja mellan 1 eller 2")
 
 print("Tack för att du spelade!")
+
