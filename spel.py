@@ -209,7 +209,7 @@ def elmer():
     if noo == 1:
         print("Du skrev in den hemliga koden nu förtjänar du en belöning hehehehehehe")
         global player_money
-        player_money += player_money*player_money
+        player_money += player_money*2
         print("Du har nu", player_money, "kronor")
         noo += noo
 
