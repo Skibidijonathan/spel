@@ -206,7 +206,7 @@ def roulette():
                     break
             
             except ValueError:
-                print("Fungerar inte så, skriv in en siffra. ")
+                print("Fungerar it så, skriv in en siffra. ")
 
         if player_money == 0:
             print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
@@ -302,7 +302,7 @@ def roulette():
                 print("Tack för att du spelade Roulette!")
                 break
 
-            
+
 
 
   
