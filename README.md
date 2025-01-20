@@ -36,11 +36,11 @@ Det här är ett Python-baserat casinospel där spelaren kan testa lyckan i tre 
 - Om resultatet matchar din satsning vinner du enligt olika odds.
 
 ## Installation
-1. Ladda ner filen `casino.py`.
+1. Ladda ner filen `spel.py`.
 2. Se till att du har Python installerat (version 3.7 eller senare).
 3. Kör spelet med kommandot:
    ```bash
-   python casino.py
+   python spel.py
    ```
 
 ## Så här spelar du
