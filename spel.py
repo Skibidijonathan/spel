@@ -200,7 +200,7 @@ def slots():
             print(f"Du har: {player_money}")
             leave = input("Tryck (q) ifall du vill lämna slots, Tryck (Enter) ifall du vill köra igen!")
             if player_money == 0:
-                break
+                quit()
 
 noo = 1
 
@@ -236,7 +236,7 @@ def roulette():
 
         if player_money == 0:
             print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
-            break
+            quit()
 
         def spin_roulette():
             number = random.randint(0, 36)
@@ -327,7 +327,7 @@ def roulette():
             if player_money == 0:
                 print("Du har inga pengar kvar att spela med. Du skickas tillbaka till startmenyn.")
                 leave = "q"
-                break
+                quit()
 
             leave = input("Tryck (q) för att lämna Roulette, eller (Enter) för att spela igen: ").lower()
             if leave == "q":
@@ -358,7 +358,7 @@ while True:
                     quit()
             if player_money == 0:
                 print("Du har inga pengar kvar att spela med. Gå hem och försök igen senare.")
-                break
+                quit()
             huvudmeny = input(
             '''
     (1). Vill du spela slots?
