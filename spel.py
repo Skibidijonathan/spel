@@ -350,7 +350,7 @@ while True:
     )
     if startmeny == "1":
         while True:
-            if player_money >= 1900000:
+            if player_money >= 19000000:
                 dop = input("Du har vunnit igenom att få över 19 miljoner kronor! Vill du fortsätta tryck (y) annars tryck på valfri knapp (Använd koden elmer i menyn!)")
                 if dop =="y":
                     pass
